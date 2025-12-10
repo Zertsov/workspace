@@ -14,20 +14,22 @@ bun install
 bun run src/index.ts --help
 ```
 
-Common flows:
+Common flows (using compiled binary or bun runner):
 ```bash
 # Create a workspace and set a default target root
-bun run src/index.ts workspace create Clerk --target ~/dev/worktrees --default-branch main
+./dist/workspace-cli workspace create Clerk --target ~/dev/worktrees --default-branch main
+# or: bun run src/index.ts workspace create Clerk --target ~/dev/worktrees --default-branch main
 
 # Register repos (point at your base clone to attach worktrees)
-bun run src/index.ts repo add -w Clerk --name dashboard --source ~/dev/clerk/dashboard
-bun run src/index.ts repo add -w Clerk --name api --source ~/dev/clerk/api
+./dist/workspace-cli repo add -w Clerk --name dashboard --source ~/dev/clerk/dashboard
+./dist/workspace-cli repo add -w Clerk --name api --source ~/dev/clerk/api
+# or: bun run src/index.ts repo add ...
 
 # Spin up worktrees for a branch (will create branch if missing)
-bun run src/index.ts init Clerk --branch feature/foo --target ~/dev/worktrees
+./dist/workspace-cli init Clerk --branch feature/foo --target ~/dev/worktrees
 
 # Check status of worktrees under the target root
-bun run src/index.ts status Clerk
+./dist/workspace-cli status Clerk
 ```
 
 ## Scripts
