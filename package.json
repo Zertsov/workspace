@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "bun run src/index.ts",
+    "build:bin": "bun build src/index.ts --compile --outfile dist/workspace-cli",
     "test": "bun test",
     "check": "tsc --noEmit",
     "lint": "bun run check"

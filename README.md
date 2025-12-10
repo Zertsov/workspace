@@ -32,5 +32,6 @@ bun run src/index.ts status Clerk
 
 ## Scripts
 - `bun run src/index.ts ...` – execute the CLI
+- `bun run build:bin` – produce a single-file executable at `dist/workspace-cli`
 - `bun test` – run tests (to be added)
 - `bun run check` – TypeScript type-check
