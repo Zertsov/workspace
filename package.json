@@ -1,0 +1,26 @@
+{
+  "name": "workspace-cli",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "module": "src/index.ts",
+  "bin": {
+    "workspace-cli": "src/index.ts"
+  },
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "test": "bun test",
+    "check": "tsc --noEmit",
+    "lint": "bun run check"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.8.1",
+    "commander": "^12.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^22.7.4",
+    "typescript": "^5.6.3"
+  }
+}
