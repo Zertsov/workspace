@@ -4,7 +4,6 @@ import {
   isCancel,
   log,
   outro,
-  select,
   text
 } from "@clack/prompts";
 import { Command } from "commander";
