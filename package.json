@@ -5,11 +5,11 @@
   "private": true,
   "module": "src/index.ts",
   "bin": {
-    "workspace-cli": "src/index.ts"
+    "workspace": "src/index.ts"
   },
   "scripts": {
     "dev": "bun run src/index.ts",
-    "build:bin": "bun build src/index.ts --compile --outfile dist/workspace-cli",
+    "build:prod": "bun build src/index.ts --compile --outfile dist/workspace",
     "test": "bun test",
     "check": "tsc --noEmit",
     "lint": "bun run check"
