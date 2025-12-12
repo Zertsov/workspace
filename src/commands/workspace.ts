@@ -12,11 +12,7 @@ import { loadConfig, updateConfig } from "../config";
 import { findWorkspace, removeWorkspace, upsertWorkspace } from "../workspace";
 
 export function registerWorkspaceCommands(program: Command) {
-  const workspace = program
-    .command("workspace")
-    .description("Manage workspaces");
-
-  workspace
+  program
     .command("list")
     .description("List configured workspaces")
     .action(async () => {
@@ -34,7 +30,7 @@ export function registerWorkspaceCommands(program: Command) {
       }
     });
 
-  workspace
+  program
     .command("create")
     .argument("[name]", "Workspace name")
     .option("-t, --target <dir>", "Default target directory for worktrees")
@@ -84,7 +80,7 @@ export function registerWorkspaceCommands(program: Command) {
       outro(`Workspace "${nameInput}" saved.`);
     });
 
-  workspace
+  program
     .command("remove")
     .argument("<name>", "Workspace name")
     .description("Remove a workspace")
@@ -105,27 +101,6 @@ export function registerWorkspaceCommands(program: Command) {
       }
       await updateConfig((cfg) => removeWorkspace(cfg, name));
       outro(`Workspace "${name}" removed.`);
-    });
-
-  workspace
-    .command("pick")
-    .description("Select a workspace and print its name (useful for scripts)")
-    .action(async () => {
-      const config = await loadConfig();
-      if (!config.workspaces.length) {
-        log.error("No workspaces configured.");
-        return;
-      }
-      const choice = await select({
-        message: "Choose a workspace",
-        options: config.workspaces.map((ws) => ({
-          value: ws.name,
-          label: `${ws.name} (${ws.repos.length} repos)`
-        }))
-      });
-      if (isCancel(choice)) return outro("Cancelled");
-      console.log(choice);
-      outro("Done");
     });
 }
 
